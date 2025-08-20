@@ -63,6 +63,12 @@ vim.diagnostic.config({
 	severity_sort = true,
 })
 
+vim.filetype.add({
+	filename = {
+		["CMakeLists.txt"] = "cmake",
+	}
+})
+
 -- autocmds
 
 vim.api.nvim_create_autocmd("VimEnter", {

@@ -7,7 +7,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     dependencies = { "neovim/nvim-lspconfig" },
     config = function()
-	  local servers = { "clangd", "pyright", "bashls", "ts_ls", "marksman", "lua_ls" }
+	  local servers = { "clangd", "pyright", "bashls", "ts_ls", "marksman", "lua_ls", "cmake" }
       require("mason-lspconfig").setup({
 		ensure_installed = servers,
 		automatic_enable = {
@@ -19,7 +19,10 @@ return {
       local lspconfig = require("lspconfig")
 	  lspconfig.clangd.setup({
 		root_dir = lspconfig.util.root_pattern(".clangd", "Makefile", ".git", "compile_commands.json")
-	  })	
+	  })
+	  lspconfig.cmake.setup({
+		filetypes = { "cmake", "CMakeLists.txt" }
+	  })
     end,
   },
   {
